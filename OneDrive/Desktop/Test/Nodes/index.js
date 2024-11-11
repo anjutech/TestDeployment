@@ -8,7 +8,7 @@ const PORT = process.env.PORT ||  5000;
 // MongoDB connection URI and Database Name
 const uri = 'mongodb://localhost:27017/local'; // Replace with your MongoDB URI
 const dbName = 'local'; // Replace with your database name
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri);
 
 // Use CORS to allow requests from the frontend
 app.use(cors());
@@ -30,7 +30,7 @@ async function connectToDB() {
   }
   
   // Endpoint to fetch users based on dynamic query parameters
-  app.get('/backendData', async (req, res) => {
+  app.get('/', async (req, res) => {
     try {
       await client.connect();
       const database = client.db(dbName);
