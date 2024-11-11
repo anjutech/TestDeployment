@@ -9,8 +9,10 @@ export function Home(){
         console.log("true");
     
         try {
-          let url = 'http://localhost:5000/backendData'; // URL for your Node.js backend
-    
+           
+          // let url = 'http://localhost:5000/backendData'; // URL for your Node.js backend
+              let url = 'https://testdeploymentbackend.onrender.com'; // URL for your live by render  Node.js backend
+
                     
           // Fetch the users with query parameters
           const response = await axios.get(`${url}`);
