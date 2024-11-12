@@ -6,8 +6,8 @@ const cors = require('cors');
 const PORT = process.env.PORT || 3000;;
 
 // MongoDB connection URI and Database Name
-const uri = 'mongodb://localhost:27017/local'; // Replace with your MongoDB URI
-const dbName = 'local'; // Replace with your database name
+const uri = 'mongodb://localhost:27017/users'; // Replace with your MongoDB URI
+const dbName = 'users'; // Replace with your database name
 const client = new MongoClient(uri);
 
 // Use CORS to allow requests from the frontend
