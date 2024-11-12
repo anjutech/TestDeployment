@@ -16,6 +16,7 @@ export function Home(){
                     
           // Fetch the users with query parameters
           const response = await axios.get(`${url}`);
+           console.log(response.data);
           setUsers(response.data);
         } catch (err) {
           console.log('Error fetching users');
