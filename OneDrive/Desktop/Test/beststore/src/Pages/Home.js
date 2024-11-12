@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+dimport React, { useEffect, useState } from 'react';
 import axios from 'axios';
 export function Home(){
    
@@ -11,7 +11,7 @@ export function Home(){
         try {
            
           // let url = 'http://localhost:5000/backendData'; // URL for your Node.js backend
-              let url = 'https://testdeploymentbackend.onrender.com/'; // URL for your live by render  Node.js backend
+              let url = 'https://testdeploymentbackend.onrender.com/backend'; // URL for your live by render  Node.js backend
 
                     
           // Fetch the users with query parameters
