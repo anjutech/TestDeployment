@@ -16,7 +16,7 @@ async function connectToDB() {
     try {
         await client.connect();
         console.log("Connected to the database successfully!");
-        const database = client.db("myDatabase"); // Access the database
+        const database = client.db("users"); // Access the database
     
         // Example: Fetch a collection
         const collection = database.collection("users");
