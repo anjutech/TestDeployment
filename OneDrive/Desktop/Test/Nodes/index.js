@@ -28,7 +28,10 @@ async function connectToDB() {
         await client.close(); // Close the connection after operations
       }
   }
-  
+  app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
   // Endpoint to fetch users based on dynamic query parameters
   app.get('/backend', async (req, res) => {
     try {
