@@ -3,7 +3,7 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT ||  3000;
+const PORT = process.env.PORT || 3000;;
 
 // MongoDB connection URI and Database Name
 const uri = 'mongodb://localhost:27017/local'; // Replace with your MongoDB URI
@@ -21,7 +21,7 @@ async function connectToDB() {
         // Example: Fetch a collection
         const collection = database.collection("users");
         const users = await collection.find({}).toArray();
-        console.log(users);
+        console.log("Users Fetched Successfully !");
       } catch (err) {
         console.error("Error connecting to the database:", err);
       } finally {
