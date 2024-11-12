@@ -3,7 +3,7 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT || 5000;;
+const PORT = process.env.PORT || 5000;
 
 // MongoDB connection URI and Database Name
 const uri = 'mongodb://localhost:27017/users'; // Replace with your MongoDB URI
