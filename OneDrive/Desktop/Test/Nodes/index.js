@@ -30,7 +30,7 @@ async function connectToDB() {
   }
   
   // Endpoint to fetch users based on dynamic query parameters
-  app.get('/backend', async (req, res) => {
+  app.get('/*', async (req, res) => {
     try {
       await client.connect();
       const database = client.db(dbName);
