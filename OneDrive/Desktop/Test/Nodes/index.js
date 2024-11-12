@@ -1,6 +1,7 @@
 // index.js
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const path = require('path');
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
@@ -9,7 +10,8 @@ const PORT = process.env.PORT || 5000;
 const uri = 'mongodb://localhost:27017/users'; // Replace with your MongoDB URI
 const dbName = 'users'; // Replace with your database name
 const client = new MongoClient(uri);
-
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'build')));
 // Use CORS to allow requests from the frontend
 app.use(cors());
 async function connectToDB() {
@@ -28,12 +30,9 @@ async function connectToDB() {
         await client.close(); // Close the connection after operations
       }
   }
-  app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
+ 
   // Endpoint to fetch users based on dynamic query parameters
-  app.get('*', async (req, res) => {
+  app.get('/backend', async (req, res) => {
     try {
       await client.connect();
       const database = client.db(dbName);
@@ -51,7 +50,10 @@ async function connectToDB() {
       res.status(500).send('Error fetching data');
     }
   });
-  
+   app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     connectToDB(); // Call the function to connect to MongoDB
