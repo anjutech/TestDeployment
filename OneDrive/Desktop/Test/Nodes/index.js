@@ -37,27 +37,28 @@ async function connectToDB() {
   }
  
   // Endpoint to fetch users based on dynamic query parameters
-  app.get('/', async (req, res) => {
+  app.get('*', async (req, res) => {
     try {
       await client.connect();
       const database = client.db(dbName);
       const collection = database.collection('users');
-  
+
+      
       // Build a dynamic query based on request query parameters
       if (req.query.name) query.name = req.query.name;
       if (req.query.age) query.age = parseInt(req.query.age, 10);
       // Fetch matching documents
       const users = await collection.find({}).toArray();
+        res.sendFile(path.join(__dirname, 'build', 'index.html'));
       console.log(users);
       res.json(users);
+      
     } catch (error) {
       console.error('Error fetching data:', error);
       res.status(500).send('Error fetching data');
     }
   });
-   app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+  
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
